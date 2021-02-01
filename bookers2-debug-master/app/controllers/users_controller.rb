@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+  #6解答　before_action :authenticate_user!追記
   before_action :ensure_correct_user, only: [:update, :edit]
   #26 , :edit追記
 

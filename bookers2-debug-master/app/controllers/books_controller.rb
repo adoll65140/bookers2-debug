@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
+  #6解答　before_action :authenticate_user!追記
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   #29 before_action :ensure_correct_user, only: [:edit, :update, :destroy]追記
 
@@ -25,13 +27,13 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    #29解答　@book = Book.find(params[:id])削除
   end
 
 
 
   def update
-    @book = Book.find(params[:id])
+    #29解答　@book = Book.find(params[:id])削除
     if @book.update(book_params)
       redirect_to book_path(@book), notice: "You have updated book successfully."
     else
@@ -41,7 +43,7 @@ class BooksController < ApplicationController
 
   def destroy
     #23 delete=>destroy
-    @book = Book.find(params[:id])
+    #29解答　@book = Book.find(params[:id])削除
     @book.destroy
     #23 destoy=>destroy
     redirect_to books_path
